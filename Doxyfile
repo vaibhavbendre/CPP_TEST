@@ -1,0 +1,40 @@
+# Doxygen configuration for the cinema booking API.
+#
+# BONUS REQUIREMENT SATISFIED: "(Bonus) Documentation generator (Doxygen etc)"
+# (design.md section 10).
+#
+# Generate with either:
+#     doxygen Doxyfile
+#     cmake --build build --target docs        (target exists when Doxygen is found)
+# Output: docs/html/index.html
+#
+# Only options that differ from Doxygen's defaults are listed.
+
+PROJECT_NAME           = "Cinema Booking Backend"
+PROJECT_BRIEF          = "In-memory, thread-safe movie ticket booking service (C++17)"
+PROJECT_NUMBER         = 1.0.0
+# (Doxygen creates only the last path component, so keep this one level deep.)
+OUTPUT_DIRECTORY       = docs
+
+# The consumer-facing API is the public headers; the README is the landing page.
+INPUT                  = include README.md HOW_TO_RUN.md design.md WALKTHROUGH.md HIGH_LEVEL_DESIGN.md LOW_LEVEL_DESIGN.md SOLUTION_JOURNEY.md
+FILE_PATTERNS          = *.hpp *.md
+RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = README.md
+
+# Public API only: hide private members, document everything that is public.
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+JAVADOC_AUTOBRIEF      = YES
+MARKDOWN_SUPPORT       = YES
+
+# Keep the output self-contained (no Graphviz needed).
+HAVE_DOT               = NO
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+# Surface documentation gaps so the headers stay fully documented.
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+QUIET                  = YES
